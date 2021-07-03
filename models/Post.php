@@ -53,9 +53,11 @@
       //prepare statement
       $stmt = $this->conn->prepare($query);
       //bind id
-      $stmt->bindParam(1,$this->id);
+      //$stmt->bindParam(1,$this->id);
       //execute query
-      $stmt->execute();
+      //$stmt->execute();
+      //executing and binding query
+      $stmt->execute([$this->id]);
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       //set properties
       $this->title = $row['title'];
@@ -93,7 +95,7 @@
       $stmt->bindParam(2,$this->body);
       $stmt->bindParam(3,$this->author);
       $stmt->bindParam(4,$this->category_id);
-      //binding params by place holder name
+      //binding params by place holder
       // $stmt->bindParam(':title',$this->title);
       // $stmt->bindParam(':body',$this->body);
       // $stmt->bindParam(':author',$this->author);
